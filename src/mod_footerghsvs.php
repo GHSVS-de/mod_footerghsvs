@@ -53,6 +53,6 @@ foreach ($lineone as $key =>$entry)
 }
 
 $lineone = trim(implode($divider, $lineone));
-$moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx'));
+$moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx', ''));
 require ModuleHelper::getLayoutPath('mod_footerghsvs', $params->get('layout', 'default'));
 ?>
