@@ -59,7 +59,7 @@ class FooterGhsvsHelper
 			$footerstart = '&copy;' . $cur_year;
 		}
 
-		$lineone[] = $footerstart;
+		$lineone['footerstart'] = $footerstart;
 		return $footerstart;
 	}
 
@@ -70,7 +70,7 @@ class FooterGhsvsHelper
 	{
 		if (($footertext = trim($params->get('footertext', ''))) !== '')
 		{
-			$lineone[] = $footertext;
+			$lineone['footertext'] = $footertext;
 		}
 
 		return $footertext;
@@ -83,7 +83,7 @@ class FooterGhsvsHelper
 	{
 		if (($footertel = trim($params->get('footertel', ''))) !== '')
 		{
-			$lineone[] = $footertel;
+			$lineone['footertel'] = $footertel;
 		}
 
 		return $footertel;
@@ -98,7 +98,7 @@ class FooterGhsvsHelper
 		if (($footeremail = trim($params->get('footeremail', ''))) !== '')
 		{
 			$footeremail = HTMLHelper::_('email.cloak', $footeremail);
-			$lineone[] = $footeremail;
+			$lineone['footeremail'] = $footeremail;
 		}
 
 		return $footeremail;
@@ -113,7 +113,7 @@ class FooterGhsvsHelper
 		{
 			$footerweb = '<a href="' . Uri::getInstance()->getScheme() . '://'
 				. $footerweb . '">' . $footerweb .'</a>';
-			$lineone[] = $footerweb;
+			$lineone['footerweb'] = $footerweb;
 		}
 
 		return $footerweb;
