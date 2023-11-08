@@ -1,11 +1,26 @@
-const fse = require('fs-extra');
-const chalk = require('chalk');
-const replaceXml = require('./build/replaceXml.js');
-const helper = require('./build/helper.js');
+#!/usr/bin/env node
+const path = require('path');
+
+/* Configure START */
+const pathBuildKram = path.resolve("../buildKramGhsvs");
+const updateXml = `${pathBuildKram}/build/update_no-changelog.xml`;
+// const changelogXml = `${pathBuildKram}/build/changelog.xml`;
+const releaseTxt = `${pathBuildKram}/build/release_no-changelog.txt`;
+/* Configure END */
+
+const replaceXml = require(`${pathBuildKram}/build/replaceXml.js`);
+const helper = require(`${pathBuildKram}/build/helper.js`);
+
+const pc = require(`${pathBuildKram}/node_modules/picocolors`);
+//const fse = require(`${pathBuildKram}/node_modules/fs-extra`);
+
+let replaceXmlOptions = {};
+let zipOptions = {};
+let from = "";
+let to = "";
 
 const {
 	name,
-	filename,
 	version,
 } = require("./package.json");
 
@@ -18,81 +33,56 @@ const Manifest = `${__dirname}/package/${manifestFileName}`;
 		`./dist`,
 		`./package`,
 	];
-
 	await helper.cleanOut(cleanOuts);
 
-	await fse.copy(`./src`, `./package`
-	).then(
-		answer => console.log(chalk.yellowBright(
-			`Copied "./src/*" into "./package".`))
-	);
+	from = `./src`;
+	to = `./package`;
+	await helper.copy(from, to)
 
-	if (!(await fse.exists("./dist")))
-	{
-    	await fse.mkdir("./dist"
-		).then(
-			answer => console.log(chalk.yellowBright(`Created "./dist".`))
-		);
-  }
+	await helper.mkdir('./dist');
 
 	const zipFilename = `${name}-${version}.zip`;
 
-	await replaceXml.main(Manifest, zipFilename);
-	await fse.copy(`${Manifest}`, `./dist/${manifestFileName}`).then(
-		answer => console.log(chalk.yellowBright(
-			`Copied "${manifestFileName}" to "./dist".`))
-	);
+	replaceXmlOptions = {
+		"xmlFile": Manifest,
+		"zipFilename": zipFilename,
+		"checksum": "",
+		"dirname": __dirname
+	};
+
+	await replaceXml.main(replaceXmlOptions);
+	from = Manifest;
+	to =  `./dist/${manifestFileName}`;
+	await helper.copy(from, to)
 
 	// Create zip file and detect checksum then.
-	const zipFilePath = `./dist/${zipFilename}`;
+	const zipFilePath = path.resolve(`./dist/${zipFilename}`);
 
-	const zip = new (require('adm-zip'))();
-	zip.addLocalFolder("package", false);
-	await zip.writeZip(`${zipFilePath}`);
-	console.log(chalk.cyanBright(chalk.bgRed(
-		`"./dist/${zipFilename}" written.`)));
+	zipOptions = {
+		"source": path.resolve("package"),
+		"target": zipFilePath
+	};
+	await helper.zip(zipOptions)
 
-	const Digest = 'sha256'; //sha384, sha512
-	const checksum = await helper.getChecksum(zipFilePath, Digest)
-  .then(
-		hash => {
-			const tag = `<${Digest}>${hash}</${Digest}>`;
-			console.log(chalk.greenBright(`Checksum tag is: ${tag}`));
-			return tag;
-		}
-	)
-	.catch(error => {
-		console.log(error);
-		console.log(chalk.redBright(`Error while checksum creation. I won't set one!`));
-		return '';
-	});
+	replaceXmlOptions.checksum = await helper._getChecksum(zipFilePath);
 
-	let xmlFile = 'update.xml';
-	await fse.copy(`./${xmlFile}`, `./dist/${xmlFile}`).then(
-		answer => console.log(chalk.yellowBright(
-			`Copied "${xmlFile}" to ./dist.`))
-	);
-	await replaceXml.main(`${__dirname}/dist/${xmlFile}`, zipFilename, checksum);
+	// Bei diesen werden zuerst Vorlagen nach dist/ kopiert und dort erst "replaced".
+	for (const file of [updateXml, releaseTxt])
+	{
+		from = file;
+		to = `./dist/${path.win32.basename(file)}`;
+		await helper.copy(from, to)
 
-	xmlFile = 'changelog.xml';
-	await fse.copy(`./${xmlFile}`, `./dist/${xmlFile}`).then(
-		answer => console.log(chalk.yellowBright(
-			`Copied "${xmlFile}" to ./dist.`))
-	);
-	await replaceXml.main(`${__dirname}/dist/${xmlFile}`, zipFilename, checksum);
-
-	xmlFile = 'release.txt';
-	await fse.copy(`./${xmlFile}`, `./dist/${xmlFile}`).then(
-		answer => console.log(chalk.yellowBright(
-			`Copied "${xmlFile}" to ./dist.`))
-	);
-	await replaceXml.main(`${__dirname}/dist/${xmlFile}`, zipFilename, checksum);
+		replaceXmlOptions.xmlFile = path.resolve(to);
+		await replaceXml.main(replaceXmlOptions);
+	}
 
 	cleanOuts = [
-		`./package`,
+		`./package`
 	];
 	await helper.cleanOut(cleanOuts).then(
-		answer => console.log(chalk.cyanBright(chalk.bgRed(
-			`Finished. Good bye!`)))
+		answer => console.log(
+			pc.cyan(pc.bold(pc.bgRed(`Finished. Good bye!`)))
+		)
 	);
 })();
