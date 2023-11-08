@@ -6,12 +6,12 @@
 	<copyright>(C) 2017, G@HService Berlin Neukölln, Volkmar Volli Schlothauer (ghsvs.de)</copyright>
 	<license>GNU General Public License version 3 or later; see LICENSE.txt.</license>
 	<authorUrl>https://ghsvs.de</authorUrl>
-	<version>2023.11.09</version>
+	<version>2023.11.10</version>
 	<description>MOD_FOOTERGHSVS_XML_DESCRIPTION</description>
 
 	<updateservers><server type="extension" priority="1" name="MOD_FOOTERGHSVS">https://raw.githubusercontent.com/GHSVS-de/upadateservers/master/mod_footerghsvs-update.xml</server></updateservers>
 
-	<infourl>https://github.com/GHSVS-de/mod_footerghsvs/releases/tag/2023.11.09</infourl>
+	<infourl>https://github.com/GHSVS-de/mod_footerghsvs/releases/tag/2023.11.10</infourl>
 
 	<scriptfile>installerScript.php</scriptfile>
 	<minimumPhp>7.4.0</minimumPhp>
