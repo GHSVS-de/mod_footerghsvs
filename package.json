@@ -2,8 +2,8 @@
 	"name": "mod_footerghsvs",
 	"nameReal": "mod_footerghsvs",
 	"filename": "mod_footerghsvs",
-	"version": "2023.11.09",
-	"versionCompare": "2022.06.14",
+	"version": "2023.11.10",
+	"versionCompare": "2022.11.09",
 	"versionSub": "",
 	"update": {
 		"infourl": "https://github.com/GHSVS-de/mod_footerghsvs{{thisRelease}}",
