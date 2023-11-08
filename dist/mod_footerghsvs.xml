@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" client="site" method="upgrade">
+	<name>MOD_FOOTERGHSVS</name>
+	<author>G@HService Berlin Neukölln, Volkmar Volli Schlothauer</author>
+	<creationDate>2017-10-07</creationDate>
+	<copyright>(C) 2017, G@HService Berlin Neukölln, Volkmar Volli Schlothauer (ghsvs.de)</copyright>
+	<license>GNU General Public License version 3 or later; see LICENSE.txt.</license>
+	<authorUrl>https://ghsvs.de</authorUrl>
+	<version>2023.11.09</version>
+	<description>MOD_FOOTERGHSVS_XML_DESCRIPTION</description>
+
+	<updateservers><server type="extension" priority="1" name="MOD_FOOTERGHSVS">https://raw.githubusercontent.com/GHSVS-de/upadateservers/master/mod_footerghsvs-update.xml</server></updateservers>
+
+	<infourl>https://github.com/GHSVS-de/mod_footerghsvs/releases/tag/2023.11.09</infourl>
+
+	<scriptfile>installerScript.php</scriptfile>
+	<minimumPhp>7.4.0</minimumPhp>
+	<maximumPhp></maximumPhp>
+	<minimumJoomla>4.3.0</minimumJoomla>
+	<maximumJoomla>5.9999.9999</maximumJoomla>
+	<allowDowngrades>1</allowDowngrades>
+
+	<files>
+		<folder>language</folder>
+		<folder module="mod_footerghsvs">services</folder>
+		<folder>src</folder>
+		<folder>tmpl</folder>
+		<filename>installerScript.php</filename>
+		<filename>LICENSE.txt</filename>
+	</files>
+	<namespace path="src">GHSVS\Module\FooterGhsvs</namespace>
+	<config addfieldprefix="GHSVS\Module\FooterGhsvs\Site\Field">
+		<fields name="params">
+			<fieldset name="advanced">
+
+				<field name="footerstart" type="text" default="" filter="string"
+					class="extended-width"
+					label="MOD_FOOTERGHSVS_FOOTERSTART"/>
+
+				<field name="footertext" type="text" default="" filter="safehtml"
+					class="extended-width"
+					label="MOD_FOOTERGHSVS_FOOTERTEXT"/>
+
+				<field name="footertel" type="text" label="MOD_FOOTERGHSVS_FOOTERTEL" filter="safehtml"
+					default="" class="extended-width"/>
+
+				<field name="footeremail" type="text" default="" filter="string"
+					class="extended-width"
+					label="MOD_FOOTERGHSVS_FOOTEREMAIL"
+					description="MOD_FOOTERGHSVS_FOOTEREMAIL_DESC" />
+
+				<field name="footerweb" type="text" default="" filter="string"
+					class="extended-width"
+					label="MOD_FOOTERGHSVS_FOOTERWEB"
+					description="MOD_FOOTERGHSVS_FOOTERWEB_DESC" />
+
+				<field name="divider" type="text" filter="safehtml"
+					label="MOD_FOOTERGHSVS_DIVIDER"
+					description="MOD_FOOTERGHSVS_DIVIDER_DESC"
+					default=" ° " class="extended-width"/>
+
+				<field
+					name="layout"
+					type="modulelayout"
+					label="JFIELD_ALT_LAYOUT_LABEL"
+					class="form-select"
+					validate="moduleLayout"
+				/>
+
+				<field name="moduleclass_sfx" type="textarea" filter="string"
+					validate="CssIdentifier"
+					label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"/>
+
+				<field
+					name="cache"
+					type="list"
+					label="COM_MODULES_FIELD_CACHING_LABEL"
+					default="1"
+					filter="integer"
+					validate="options"
+					>
+					<option value="1">JGLOBAL_USE_GLOBAL</option>
+					<option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+
+				<field name="cache_time" type="number" default="900" filter="integer"
+					label="COM_MODULES_FIELD_CACHE_TIME_LABEL" />
+
+				<field name="cachemode" type="hidden" default="static">
+					<option value="static"></option>
+				</field>
+
+			</fieldset>
+		</fields>
+	</config>
+</extension>
