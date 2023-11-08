@@ -21,7 +21,13 @@ class mod_footerGhsvsInstallerScript extends InstallerScript
 	 * @var    array
 	 * @since  2.0
 	 */
-	protected $deleteFiles = [];
+	protected $deleteFiles = [
+		'/modules/mod_footerghsvs/mod_footerghsvs.php',
+		'/modules/mod_footerghsvs/language/de-DE/de-DE.mod_footerghsvs.ini',
+		'/modules/mod_footerghsvs/language/de-DE/de-DE.mod_footerghsvs.sys.ini',
+		'/modules/mod_footerghsvs/language/en-GB/en-GB.mod_footerghsvs.ini',
+		'/modules/mod_footerghsvs/language/en-GB/en-GB.mod_footerghsvs.sys.ini',
+	];
 
 	/**
 	 * A list of folders to be deleted with method removeFiles().
