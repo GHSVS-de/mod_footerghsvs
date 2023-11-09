@@ -9,11 +9,11 @@ $input
 $template
 
 $cur_year String Current Year
-$footerstart String Start year to Current year OR just Current Year
+$footerstart String Start year
 $footertext String
 $footertel String
-$footeremail String Cloaked email
-$footerweb String HTML-Anchor
+$footeremail String Email
+$footerweb String
 $divider String
 $modId String Soemthing like "modId-mod_footerghsvs123456"
 $moduleclass_sfx String

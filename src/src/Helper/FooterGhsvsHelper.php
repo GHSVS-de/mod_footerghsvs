@@ -12,31 +12,32 @@ use Joomla\CMS\HTML\HTMLHelper;
 
 class FooterGhsvsHelper
 {
+	/* Contains only relevant entries as concated string. */
+	private $lineone = [];
+
 	public function getDisplayData(Registry $moduleParams, Object $module): array
 	{
-		$lineone = [];
-
 		$displayData = [
 			'cur_year' => $this->getCur_Year(),
-			'footerstart' => $this->getFooterStart($moduleParams, $lineone),
-			'footertext' => $this->getFooterText($moduleParams, $lineone),
-			'footertel' => $this->getFooterTel($moduleParams, $lineone),
-			'footeremail' => $this->getFooterEmail($moduleParams, $lineone),
-			'footerweb' => $this->getFooterWeb($moduleParams, $lineone),
-			'divider' => $this->getDivider($moduleParams, $lineone),
+			'footerstart' => $this->getFooterStart($moduleParams),
+			'footertext' => $this->getFooterText($moduleParams),
+			'footertel' => $this->getFooterTel($moduleParams),
+			'footeremail' => $this->getFooterEmail($moduleParams),
+			'footerweb' => $this->getFooterWeb($moduleParams),
+			'divider' => $this->getDivider($moduleParams),
 			'modId' => 'modId-' . $module->module . $module->id,
 			'moduleclass_sfx' => $this->getModuleclass_sfx($moduleParams),
 			'module' => $this->prepareModule($moduleParams, $module),
 		];
 
-		foreach ($lineone as $key =>$entry)
+		foreach ($this->lineone as $key =>$entry)
 		{
-			$lineone[$key] = '<span class="footerghsvsEntry ' . $key . '">' . $entry
+			$this->lineone[$key] = '<span class="footerghsvsEntry ' . $key . '">' . $entry
 				. '</span>';
 		}
 
 		$displayData['lineone'] = trim(implode('<span class=footerghsvsDivider>'
-			. $displayData['divider'] . '</span>', $lineone));
+			. $displayData['divider'] . '</span>', $this->lineone));
 
 		return $displayData;
 	}
@@ -46,31 +47,30 @@ class FooterGhsvsHelper
 	ODER
 	nur aktuelles Jahr
 	*/
-	public function getFooterStart(Registry $params, &$lineone) : string
+	public function getFooterStart(Registry $params) : string
 	{
 		$cur_year	= $this->getCur_Year();
 
 		if (($footerstart = trim($params->get('footerstart', ''))) !== '')
 		{
-			$footerstart = '&copy;' . $footerstart . '-' . $cur_year;
+			$this->lineone['footerstart'] = '&copy;' . $footerstart . '-' . $cur_year;
 		}
 		else
 		{
-			$footerstart = '&copy;' . $cur_year;
+			$this->lineone['footerstart'] = '&copy;' . $cur_year;
 		}
 
-		$lineone['footerstart'] = $footerstart;
 		return $footerstart;
 	}
 
 	/*
 	Footertext
 	*/
-	public function getFooterText(Registry $params, &$lineone) : string
+	public function getFooterText(Registry $params) : string
 	{
 		if (($footertext = trim($params->get('footertext', ''))) !== '')
 		{
-			$lineone['footertext'] = $footertext;
+			$this->lineone['footertext'] = $footertext;
 		}
 
 		return $footertext;
@@ -79,11 +79,11 @@ class FooterGhsvsHelper
 	/*
 	Footertel
 	*/
-	public function getFooterTel(Registry $params, &$lineone) : string
+	public function getFooterTel(Registry $params) : string
 	{
 		if (($footertel = trim($params->get('footertel', ''))) !== '')
 		{
-			$lineone['footertel'] = $footertel;
+			$this->lineone['footertel'] = $footertel;
 		}
 
 		return $footertel;
@@ -92,13 +92,11 @@ class FooterGhsvsHelper
 	/*
 	Footeremail
 	*/
-	public function getFooterEmail(Registry $params, &$lineone) : string
+	public function getFooterEmail(Registry $params) : string
 	{
-
 		if (($footeremail = trim($params->get('footeremail', ''))) !== '')
 		{
-			$footeremail = HTMLHelper::_('email.cloak', $footeremail);
-			$lineone['footeremail'] = $footeremail;
+			$this->lineone['footeremail'] = HTMLHelper::_('email.cloak', $footeremail);
 		}
 
 		return $footeremail;
@@ -107,13 +105,13 @@ class FooterGhsvsHelper
 	/*
 	Footerweb
 	*/
-	public function getFooterWeb(Registry $params, &$lineone) : string
+	public function getFooterWeb(Registry $params) : string
 	{
 		if (($footerweb = trim($params->get('footerweb', ''))) !== '')
 		{
-			$footerweb = '<a href="' . Uri::getInstance()->getScheme() . '://'
+			$footerwebLinked = '<a href="' . Uri::getInstance()->getScheme() . '://'
 				. $footerweb . '">' . $footerweb .'</a>';
-			$lineone['footerweb'] = $footerweb;
+			$this->lineone['footerweb'] = $footerwebLinked;
 		}
 
 		return $footerweb;
