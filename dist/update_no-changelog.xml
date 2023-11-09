@@ -1,4 +1,4 @@
-<!--MOD_FOOTERGHSVS Version 2023.11.10 Target platform: 4\.(3|4|5|6|7|8|9|10|11|12|13|14|15)-->
+<!--MOD_FOOTERGHSVS Version 2023.11.11 Target platform: 4\.(3|4|5|6|7|8|9|10|11|12|13|14|15)-->
 	<update>
 		<name>MOD_FOOTERGHSVS</name>
 		<description>Joomla site module. Display informations, e.g. in page footer.</description>
@@ -6,10 +6,10 @@
 		<type>module</type>
 		<folder></folder>
 		<client>site</client>
-		<version>2023.11.10</version>
-		<infourl>https://github.com/GHSVS-de/mod_footerghsvs/releases/tag/2023.11.10</infourl>
+		<version>2023.11.11</version>
+		<infourl>https://github.com/GHSVS-de/mod_footerghsvs/releases/tag/2023.11.11</infourl>
 		<downloads>
-			<downloadurl type="full" format="zip">https://github.com/GHSVS-de/mod_footerghsvs/raw/2023.11.10/dist/mod_footerghsvs-2023.11.10.zip</downloadurl>
+			<downloadurl type="full" format="zip">https://github.com/GHSVS-de/mod_footerghsvs/raw/2023.11.11/dist/mod_footerghsvs-2023.11.11.zip</downloadurl>
 		</downloads>
 		<tags>
 			<tag>stable</tag>
@@ -18,10 +18,10 @@
 		<maintainerurl>https://ghsvs.de</maintainerurl>
 		<targetplatform name="joomla" version="4\.(3|4|5|6|7|8|9|10|11|12|13|14|15)" />
 		<php_minimum>7.4.0</php_minimum>
-		<sha256>c399287ae7e93362705b54ff7b90329ee49426c496627d89d88605c1a616c3bb</sha256>
+		<sha256>15cb34d1245d9d8202fd826d683b13d5d644c2599fabdc0b941221d5150cc510</sha256>
 	</update>
-<!--/MOD_FOOTERGHSVS Version 2023.11.10 Target platform: 4\.(3|4|5|6|7|8|9|10|11|12|13|14|15)-->
-<!--MOD_FOOTERGHSVS Version 2023.11.10 Target platform: 5.*-->
+<!--/MOD_FOOTERGHSVS Version 2023.11.11 Target platform: 4\.(3|4|5|6|7|8|9|10|11|12|13|14|15)-->
+<!--MOD_FOOTERGHSVS Version 2023.11.11 Target platform: 5.*-->
 	<update>
 		<name>MOD_FOOTERGHSVS</name>
 		<description>Joomla site module. Display informations, e.g. in page footer.</description>
@@ -29,10 +29,10 @@
 		<type>module</type>
 		<folder></folder>
 		<client>site</client>
-		<version>2023.11.10</version>
-		<infourl>https://github.com/GHSVS-de/mod_footerghsvs/releases/tag/2023.11.10</infourl>
+		<version>2023.11.11</version>
+		<infourl>https://github.com/GHSVS-de/mod_footerghsvs/releases/tag/2023.11.11</infourl>
 		<downloads>
-			<downloadurl type="full" format="zip">https://github.com/GHSVS-de/mod_footerghsvs/raw/2023.11.10/dist/mod_footerghsvs-2023.11.10.zip</downloadurl>
+			<downloadurl type="full" format="zip">https://github.com/GHSVS-de/mod_footerghsvs/raw/2023.11.11/dist/mod_footerghsvs-2023.11.11.zip</downloadurl>
 		</downloads>
 		<tags>
 			<tag>stable</tag>
@@ -41,6 +41,6 @@
 		<maintainerurl>https://ghsvs.de</maintainerurl>
 		<targetplatform name="joomla" version="5.*" />
 		<php_minimum>7.4.0</php_minimum>
-		<sha256>c399287ae7e93362705b54ff7b90329ee49426c496627d89d88605c1a616c3bb</sha256>
+		<sha256>15cb34d1245d9d8202fd826d683b13d5d644c2599fabdc0b941221d5150cc510</sha256>
 	</update>
-<!--/MOD_FOOTERGHSVS Version 2023.11.10 Target platform: 5.*-->
+<!--/MOD_FOOTERGHSVS Version 2023.11.11 Target platform: 5.*-->

@@ -1,30 +1,34 @@
-2023.11.10
+2023.11.11
 
-Joomla site module mod_footerGhsvs 2023.11.10
+Joomla site module mod_footerGhsvs 2023.11.11
 
-Checksum entities: `&lt;sha256&gt;c399287ae7e93362705b54ff7b90329ee49426c496627d89d88605c1a616c3bb&lt;/sha256&gt;`
+Checksum entities: `&lt;sha256&gt;15cb34d1245d9d8202fd826d683b13d5d644c2599fabdc0b941221d5150cc510&lt;/sha256&gt;`
 
 Joomla site module. Display informations, e.g. in page footer.
 
-### Joomla 4.3+, Joomla 5
-
 ### Download
-[mod_footerghsvs-2023.11.10.zip](https://github.com/GHSVS-de/mod_footerghsvs/raw/2023.11.10/dist/mod_footerghsvs-2023.11.10.zip)
+[mod_footerghsvs-2023.11.11.zip](https://github.com/GHSVS-de/mod_footerghsvs/raw/2023.11.11/dist/mod_footerghsvs-2023.11.11.zip)
 
 ### Joomla-Target-Platform(s)
 4\.(3|4|5|6|7|8|9|10|11|12|13|14|15), 5.&ast;
 
 ### For the interested ones
-- Bug fix release. Some CSS classes were invalid.
-- [Compare releases 2023.11.09...2023.11.10](https://github.com/GHSVS-de/mod_footerghsvs/compare/2023.11.09...2023.11.10)
+- [Compare releases 2023.11.10...2023.11.11](https://github.com/GHSVS-de/mod_footerghsvs/compare/2023.11.10...2023.11.11)
 - minimumJoomla: 4.3.0
 - maximumJoomla: 5.9999.9999
 - minimumPhp: 7.4.0
-- maximumPhp:
-- Checksum: `<sha256>c399287ae7e93362705b54ff7b90329ee49426c496627d89d88605c1a616c3bb</sha256>`
+- maximumPhp: 
+- Checksum: `<sha256>15cb34d1245d9d8202fd826d683b13d5d644c2599fabdc0b941221d5150cc510</sha256>`
 - Readme: https://github.com/GHSVS-de/mod_footerghsvs#readme
 - docsDE: https://ghsvs.de/programmierer-schnipsel/joomla/373-fusszeile-im-frontend-z-b-copyright-und-kontakt-infos
-- docsEN:
+- docsEN: 
 - Updates XML: https://raw.githubusercontent.com/GHSVS-de/upadateservers/master/mod_footerghsvs-update.xml
 - Last tests: PHP 8.2<br>Joomla 4.4<br>Joomla 5.0
 - Language files: de-DE<br>en-GB
+- Requires: 
+- Uses: 
+- Contained packages (sub Joomla extensions):
+```
+
+```
+
