@@ -1,6 +1,8 @@
 # mod_footerghsvs
  Joomla site module. Display copyright informations, e.g. in page footer.
 
+## Deutsche Beschreibung: https://ghsvs.de/programmierer-schnipsel/joomla/373-fusszeile-im-frontend-z-b-copyright-und-kontakt-infos
+
 -----------------------------------------------------
 
 # My personal build procedure (WSL 1, Debian, Win 10)
